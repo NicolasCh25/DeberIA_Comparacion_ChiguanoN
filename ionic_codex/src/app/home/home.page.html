@@ -1,0 +1,55 @@
+<!--  Un encabezado (ion-header) con color primary y el título "Ubicación GPS". -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Ubicación GPS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding ion-text-center">
+  
+  <div style="margin-top: 40px;">
+<!--  Un icono grande "location-outline" de color azul en el centro.-->
+    <ion-icon name="location-outline" style="font-size: 60px; color: #3880ff;"></ion-icon>
+<!--  Dos tarjetas (ion-card) de color "light" para mostrar la Latitud y la Longitud solo si ya se obtuvieron las coordenadas (usa un ngIf).-->
+    <div *ngIf="latitude && longitude" style="margin-top: 20px;">
+      
+      <ion-card color="light">
+        <ion-card-header>
+          <ion-card-title>Latitud</ion-card-title>
+        </ion-card-header>
+        <ion-card-content style="font-size: 20px;">
+          {{ latitude }}
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card color="light">
+        <ion-card-header>
+          <ion-card-title>Longitud</ion-card-title>
+        </ion-card-header>
+        <ion-card-content style="font-size: 20px;">
+          {{ longitude }}
+        </ion-card-content>
+      </ion-card>
+
+    </div>
+<!-- Un botón de color verde (success) que diga "Abrir en Google Maps" y que use la función getGoogleMapsUrl() abriéndose en otra pestaña.-->
+    <ion-button expand="block" color="success" [href]="getGoogleMapsUrl()" target="_blank" style="margin-top: 20px;">
+      <ion-icon name="map-outline" slot="start"></ion-icon>
+      Abrir en Google Maps
+    </ion-button>
+<!-- Un mensaje de error en texto rojo si la variable errorMessage tiene datos.-->
+    <div *ngIf="errorMessage" style="color: red; margin: 20px 0; font-size: 14px;">
+      {{ errorMessage }}
+    </div>
+<!-- Un botón principal al final de la página que diga "Obtener Ubicación Actual" y que ejecute la función obtenerUbicacion() al hacer click.  estos comentarios donde los ubico -->
+    <ion-button expand="block" (click)="obtenerUbicacion()" style="margin-top: 20px;">
+      <ion-icon name="locate-outline" slot="start"></ion-icon>
+      Obtener Ubicación Actual
+    </ion-button>
+    
+  </div>
+</ion-content>
+
+
+
+

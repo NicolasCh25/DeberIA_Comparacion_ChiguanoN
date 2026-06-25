@@ -1,0 +1,7 @@
+{
+  "name": "ionic-codex",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
